@@ -1,5 +1,7 @@
 ## My Project
 
+Repository to demonstrate building, deploying, and managing software at the edge.
+
 TODO: Fill this README out!
 
 Be sure to:
