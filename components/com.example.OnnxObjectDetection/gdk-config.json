@@ -1,0 +1,16 @@
+{
+  "component": {
+    "com.example.OnnxObjectDetection": {
+      "author": "<PLACEHOLDER_AUTHOR>",
+      "version": "NEXT_PATCH",
+      "build": {
+        "build_system": "zip"
+      },
+      "publish": {
+        "bucket": "<PLACEHOLDER_BUCKET>",
+        "region": "<REGION>"
+      }
+    }
+  },
+  "gdk_version": "1.0.0"
+}

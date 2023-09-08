@@ -1,0 +1,29 @@
+---
+RecipeFormatVersion: '2020-01-25'
+ComponentName: "{COMPONENT_NAME}"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription: A component that publishes messages.
+ComponentPublisher: Amazon
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.pubsub:
+        com.example.PubSubPublisherPython:pubsub:1:
+          policyDescription: Allows access to publish to all topics.
+          operations:
+            - aws.greengrass#PublishToTopic
+          resources:
+            - "*"
+Manifests:
+  - Platform:
+      os: all
+    Artifacts:
+      - URI: "s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/com.example.FileSystemMonitor.zip"
+        Unarchive: ZIP            
+    Lifecycle:
+      Install: 
+        RequiresPrivilege: 'true'
+        Script: "python3 -m pip install --user awsiotsdk watchdog"
+      Run: 
+        RequiresPrivilege: 'true'
+        Script: "python3 -u {artifacts:decompressedPath}/com.example.FileSystemMonitor/monitor.py"

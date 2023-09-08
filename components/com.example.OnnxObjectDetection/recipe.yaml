@@ -1,0 +1,40 @@
+---
+RecipeFormatVersion: "2020-01-25"
+ComponentName: "{COMPONENT_NAME}"
+ComponentVersion: "{COMPONENT_VERSION}"
+ComponentDescription: "This component runs object detection using the onnxruntime and an onnx model. This examples shows handling IPC messages as events."
+ComponentPublisher: "{COMPONENT_AUTHOR}"
+ComponentConfiguration:
+  DefaultConfiguration:
+    accessControl:
+      aws.greengrass.ipc.pubsub:
+        "com.example.OnnxObjectDetection:pubsub:1":
+          policyDescription: Allows access to publish to test topic.
+          operations:
+            - "aws.greengrass#SubscribeToTopic"
+          resources:
+            - "*"
+    topic: "my/topic"
+    confidence: 0.85
+ComponentDependencies:
+  com.example.OnnxModelStore:
+    VersionRequirement: ">=0.0.1"
+    DependencyType: HARD
+  com.example.OnnxRuntime:
+    VersionRequirement: ">=0.0.1"
+    DependencyType: HARD    
+Manifests:
+  - Platform:
+      os: all
+    Artifacts:
+      - URI: "s3://BUCKET_NAME/COMPONENT_NAME/COMPONENT_VERSION/com.example.OnnxObjectDetection.zip"
+        Unarchive: ZIP
+    Lifecycle:
+      SetEnv:
+        IMAGES: "{artifacts:decompressedPath}/com.example.OnnxObjectDetection/images/bus.jpg"
+        MODEL_DIR: "{com.example.OnnxModelStore:artifacts:decompressedPath}/com.example.OnnxModelStore/yolov8n.onnx"
+        TOPIC: "{configuration:/topic}"
+        CONFIDENCE: "{configuration:/confidence}"
+      Run: 
+        RequiresPrivilege: 'true'
+        script: "python3 -u {artifacts:decompressedPath}/com.example.OnnxObjectDetection/main.py hello}"
