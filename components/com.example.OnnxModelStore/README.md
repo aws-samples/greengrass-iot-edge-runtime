@@ -1,13 +1,5 @@
 ## My Project
 
-TODO: Fill this README out!
+### com.Example.OnnxModelStore
 
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description 
-
-## License
-
-Add License information here
-
+This component is represents the trained model which is loaded during the inference session. Because this component is decoupled from our Object Detection, we are able to update independently of our inference code.
