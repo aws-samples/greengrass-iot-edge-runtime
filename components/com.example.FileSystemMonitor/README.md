@@ -2,4 +2,4 @@
 
 ### com.Example.FileSystemMonitor
 
-This component is a proof of concept for sending events when new files are created on the file system. For the given use case, we assume an upstream process is interfacing with sensors to perform data acquisition. Using the watchdog python library, we can send an IPC message to a specified topic to trigger inference on an adjacent component.
+The File System Monitor component is a proof of concept for monitoring a file system for new files to be created. The use case assumes the inference process should trigger when new data is available. A better pattern could be having the data acquisition process send the Greengrass IPC message directly rather than responding to file system events. This component is purely just a way to mock event creation for the given use case.

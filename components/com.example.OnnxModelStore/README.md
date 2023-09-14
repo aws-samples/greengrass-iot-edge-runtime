@@ -2,4 +2,4 @@
 
 ### com.Example.OnnxModelStore
 
-This component is represents the trained model which is loaded during the inference session. Because this component is decoupled from our Object Detection, we are able to update independently of our inference code.
+The ONNX Model contains a pre-trained machine learning model. By decoupling the model from the inference component, we can revise our model without needing to rebuild our inference code.
