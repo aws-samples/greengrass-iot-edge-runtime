@@ -62,20 +62,23 @@ This process results in selective builds which can help to manage and scale our 
 ### Greengrass Deployment
 
 In AWS IoT Core -> Greengrass, we expect to see our Components built out similar to the following
-![CICD_PIPELINE](workshop_images/GG_COMPONENTS.png)
+![GG_COMPONENTS](workshop_images/GG_COMPONENTS.png)
 
 1. We create a Greengrass Deployment and set the Deployment target to our device as follows
-   ![CICD_PIPELINE](workshop_images/GG_DEPLOYMENT1.png)
+   ![GG_DEPLOYMENT](workshop_images/GG_DEPLOYMENT1.png)
 2. We can select the Components which are built from our pipeline
-   ![CICD_PIPELINE](workshop_images/GG_DEPLOYMENT2.png)
+   ![GG_DEPLOYMENT](workshop_images/GG_DEPLOYMENT2.png)
 3. We can optionally configure the Component recipes before deployment, we will skip that for now. We click Next and then Deploy
-   ![CICD_PIPELINE](workshop_images/GG_DEPLOYMENT3.png)
+   ![GG_DEPLOYMENT](workshop_images/GG_DEPLOYMENT3.png)
 4. We confirm our Deployment has a status of Completed
-   ![CICD_PIPELINE](workshop_images/GG_DEPLOYMENT4.png)
+   ![GG_DEPLOYMENT](workshop_images/GG_DEPLOYMENT4.png)
 
 ### Demo on Edge Device
 
-From the Edge Device running AWS IoT Greengrass, we can start the demo by moving a sample image to the directory which we are monitoring, set DEPLOYMENT_VERSION according to your environment. The default directory to monitor is /root. An image is bundled with our Object Detection Component, we need to move the sample image to the directory which is being monitored.
+From the Edge Device running AWS IoT Greengrass, we can start the demo by moving the sample image to the directory which we are monitoring
+![DEMO_BUS](components/com.example.OnnxObjectDetection/images/bus.jpg)
+
+This sample image has been bundled with our Object Detection Component, we need to move it to the directory which is being monitored. Make sure to set DEPLOYMENT_VERSION according to your environment. The default directory to monitor is /root.
 
 ```
 cp /greengrass/v2/packages/artifacts-unarchived/com.example.OnnxObjectDetection/DEPLOYMENT_VERSION/com.example.OnnxObjectDetection/images/bus.jpg /root/bus.jpg
@@ -96,6 +99,9 @@ cat /greengrass/v2/logs/com.example.OnnxObjectDetection.log
 ```
 
 ![DEMO_LOG](workshop_images/DEMO_LOG2.png)
+
+If we were to apply the inference results back to our original image we would have the following
+![DEMO_BUS](workshop_images/DEMO_INFERENCE.png)
 
 ## Security
 
