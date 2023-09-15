@@ -2,7 +2,7 @@
 
 This repository demonstrates building, deploying, and managing software at the edge using AWS IoT services. This solution demonstrates Event Driven Machine Learning inference using AWS IoT Greengrass. The use case assumes we want to monitor a specified file system directory for new data. When a new image is available, an event is sent to the Object Detection Component so that it can run inference on that image. We use a sample Greengrass Component to monitor the specified directory and trigger our Object Detection process via [Greengrass Interprocess Communication (IPC)](https://docs.aws.amazon.com/greengrass/v2/developerguide/interprocess-communication.html). The Object Detection process will perform inference and write insights to the Component log.
 
-This repository utilizes Continuous Integration and Continuous Delivery (CI/CD) to simplify the process for building, managing, and deploying AWS IoT Greengrass Components. The focus of this repository is in on building Event Driven Inference using Greengrass, see the following [blog post](https://aws.amazon.com/blogs/iot/trigger-aws-iot-greengrass-component-deployments-from-aws-codecommit/) for more details on the CI/CD pipeline.
+This repository utilizes Continuous Integration and Continuous Delivery (CI/CD) to simplify the process for building and managing AWS IoT Greengrass Components. The focus of this repository is in on building Event Driven Inference using Greengrass, see the following [blog post](https://aws.amazon.com/blogs/iot/trigger-aws-iot-greengrass-component-deployments-from-aws-codecommit/) for more details on the CI/CD pipeline.
 ![ARCHITECTURE](workshop_images/ARCHITECTURE.png)
 
 ## Prerequisites
@@ -25,7 +25,7 @@ The code provided in the repository represents a CDK project. The goal is to mov
 git clone https://github.com/aws-samples/greengrass-iot-edge-runtime.git
 ```
 
-3. Configure the cdk.json file with your region, account number, and Repository ARN
+3. Configure the cdk.json file with your region, account number, and CodeCommit Repository ARN
 4. In the components directory of this repo, set the &lt;REGION&gt; in each of components/com.example.\*/gdk-config.json
 5. Note the CodeCommit HTTPS Clone URL similar to the following:
    ![SETUP_HTTPS](workshop_images/SETUP_HTTPS_REPO.png)
@@ -75,7 +75,7 @@ In AWS IoT Core -> Greengrass, we expect to see our Components built out similar
 
 ### Demo on Edge Device
 
-From the Edge Device running AWS IoT Greengrass, we can start the demo by moving the sample image to the directory which we are monitoring
+From the Edge Device running AWS IoT Greengrass, we can start the demo by moving the sample image to the directory which is being monitoring so that File System Monitor will trigger the Object Detection Component.
 ![DEMO_BUS](components/com.example.OnnxObjectDetection/images/bus.jpg)
 
 This sample image has been bundled with our Object Detection Component, we need to move it to the directory which is being monitored. Make sure to set DEPLOYMENT_VERSION according to your environment. The default directory to monitor is /root.
@@ -90,7 +90,7 @@ Next, we verify the log messages of our File System Monitor Component, we expect
 cat /greengrass/v2/logs/com.example.FileSystemMonitor.log
 ```
 
-![DEMO_LOG](workshop_images/DEMO_LOG1.png)
+![DEMO_LOG](workshop_images/DEMO_LOG3.png)
 
 We can then verify the log message of our Object Detection process received the IPC message and the results of the inference against the specified image.
 
@@ -98,7 +98,7 @@ We can then verify the log message of our Object Detection process received the 
 cat /greengrass/v2/logs/com.example.OnnxObjectDetection.log
 ```
 
-![DEMO_LOG](workshop_images/DEMO_LOG2.png)
+![DEMO_LOG](workshop_images/DEMO_LOG4.png)
 
 If we were to apply the inference results back to our original image we would have the following
 ![DEMO_BUS](workshop_images/DEMO_INFERENCE.png)

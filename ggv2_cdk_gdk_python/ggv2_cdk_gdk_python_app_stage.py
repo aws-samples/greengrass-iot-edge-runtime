@@ -9,11 +9,6 @@ from ggv2_cdk_gdk_python.app_stacks.greengrass_components_stack import (
     GreengrassComponentsStack,
 )
 
-from ggv2_cdk_gdk_python.app_stacks.monitoring_stack import (
-    MonitoringStack,
-)
-
-
 class Ggv2CdkGdkPythonAppStage(cdk.Stage):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -21,5 +16,3 @@ class Ggv2CdkGdkPythonAppStage(cdk.Stage):
         self.greengrassComponentsStack = GreengrassComponentsStack(
             self, "GreengrassComponentsStack"
         )
-
-        self.monitoringStack = MonitoringStack(self, "MonitoringStack")

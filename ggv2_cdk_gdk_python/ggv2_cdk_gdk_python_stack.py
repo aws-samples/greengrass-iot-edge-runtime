@@ -14,17 +14,11 @@ from ggv2_cdk_gdk_python.ggv2_cdk_gdk_python_app_stage import (
     Ggv2CdkGdkPythonAppStage,
 )
 
-from ggv2_cdk_gdk_python.app_stacks.ggv2core_device_stage import (Ggv2CdkGdkCoreStage)
-
-
 class Ggv2CdkGdkPythonStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         params = {
-            "createCoreDevice": self.node.try_get_context("create_core_device"),
-            "coreDeviceGroupName": self.node.try_get_context("core_device_group_name"),
-            "coreDeviceName": self.node.try_get_context("core_device_name"),
             "accountNumber": self.node.try_get_context("account"),
             "region": self.node.try_get_context("region"),
             "repository_arn": self.node.try_get_context("codecommit_repository_arn"),
@@ -71,26 +65,7 @@ class Ggv2CdkGdkPythonStack(Stack):
                 ]
             ),
         )
-
-
-        # Check if we have to create a new ggv2 installer
-        create_core_device_flag = str(params.get("createCoreDevice")).lower()
-        supported_values = ["true", "false"]
-        assert (create_core_device_flag in supported_values), f"createCoreDevice not in {supported_values}"
-        
-        
-
-        if create_core_device_flag == "true":
-            pipeline.add_stage(Ggv2CdkGdkCoreStage(
-                self,
-                "GGv2CoreStage",
-                env=cdk.Environment(
-                    account=self.node.try_get_context("account"),
-                    region=self.node.try_get_context("region"),
-                ),
-            ))
-        else:
-            print("skip core device and group creation")
+  
         pipeline.add_stage(
             Ggv2CdkGdkPythonAppStage(
                 self,

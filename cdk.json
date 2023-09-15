@@ -31,10 +31,7 @@
     "codecommit_repository_arn": "<codecommit-repo-arn>",
     "account": "<account-id>",
     "region": "<region>",
-    "create_core_device" : "true",
     "default_branch_name": "master",
-    "core_device_name": "test",
-    "core_device_group_name": "test",
     "project_prefix" : "test"
   }
 }
