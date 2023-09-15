@@ -77,7 +77,7 @@ In AWS IoT Core -> Greengrass, we expect to see our Components built out similar
 
 ### Demo on Edge Device
 
-From the Edge Device running AWS IoT Greengrass, we can start the demo by moving the sample image to the directory which is being monitoring so that File System Monitor will trigger the Object Detection Component.
+From the Edge Device running AWS IoT Greengrass, we can start the demo by moving the sample image to the directory which is being monitored. We expect File System Monitor will trigger the Object Detection Component.
 ![DEMO_BUS](components/com.example.OnnxObjectDetection/images/bus.jpg)
 
 This sample image has been bundled with our Object Detection Component, we need to move it to the directory which is being monitored. Make sure to set DEPLOYMENT_VERSION according to your environment. The default directory to monitor is /root.
