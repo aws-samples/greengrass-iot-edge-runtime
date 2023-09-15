@@ -24,6 +24,7 @@ class StreamHandler(client.SubscribeToTopicStreamHandler):
             # message = str(event.message.payload, "utf-8")
             # topic_name = event.message.topic_name
             # Handle message.
+            print("Received message")
             print(message)
             result = inference.process(str(message))
             print(result)

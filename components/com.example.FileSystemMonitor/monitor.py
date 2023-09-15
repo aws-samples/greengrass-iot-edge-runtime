@@ -21,7 +21,10 @@ TIMEOUT = 10
 
 class MyHandler(LoggingEventHandler):
     def dispatch(self, event):
+        # Triggering on created confirms its a new file but might be too quick
+        # we may want to confirm the file has finished writing before sending the message rather than the sleep(2)
         if event.key[0].lower() == "created" and str(event.key[1]).endswith('.jpg'):
+            print("New file detected")
             print(event.key[1])
             time.sleep(2)
             send_ipc_message(event.key[1])
