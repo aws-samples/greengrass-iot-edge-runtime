@@ -35,6 +35,8 @@ git clone https://github.com/aws-samples/greengrass-iot-edge-runtime.git
 cd greengrass-iot-edge-runtime
 git init
 git remote add destination <CODECOMMIT_HTTPS_URL>
+git add *
+git commit -m "First commit"
 git push destination
 ```
 
