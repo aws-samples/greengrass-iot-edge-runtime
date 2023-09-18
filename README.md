@@ -78,12 +78,12 @@ In AWS IoT Core -> Greengrass, we expect to see our Components built out similar
 ### Demo on Edge Device
 
 From the Edge Device running AWS IoT Greengrass, we can start the demo by moving the sample image to the directory which is being monitored. We expect File System Monitor will trigger the Object Detection Component.
-![DEMO_BUS](components/com.example.OnnxObjectDetection/images/bus.jpg)
+![DEMO_BUS](components/com.example.OnnxObjectDetection/images/tile1.jpg)
 
 This sample image has been bundled with our Object Detection Component, we need to move it to the directory which is being monitored. Make sure to set DEPLOYMENT_VERSION according to your environment. The default directory to monitor is /root.
 
 ```
-cp /greengrass/v2/packages/artifacts-unarchived/com.example.OnnxObjectDetection/DEPLOYMENT_VERSION/com.example.OnnxObjectDetection/images/bus.jpg /root/bus.jpg
+cp /greengrass/v2/packages/artifacts-unarchived/com.example.OnnxObjectDetection/DEPLOYMENT_VERSION/com.example.OnnxObjectDetection/images/tile1.jpg /root/tile1.jpg
 ```
 
 Next, we verify the log messages of our File System Monitor Component, we expect to see a log statement which shows that our image was detected by the monitoring process. We also note that the message was published to our IPC topic.
@@ -92,7 +92,7 @@ Next, we verify the log messages of our File System Monitor Component, we expect
 cat /greengrass/v2/logs/com.example.FileSystemMonitor.log
 ```
 
-![DEMO_LOG](workshop_images/DEMO_LOG3.png)
+![DEMO_LOG](workshop_images/DEMO_LOG1.png)
 
 We can then verify the log message of our Object Detection process received the IPC message and the results of the inference against the specified image.
 
@@ -100,10 +100,10 @@ We can then verify the log message of our Object Detection process received the 
 cat /greengrass/v2/logs/com.example.OnnxObjectDetection.log
 ```
 
-![DEMO_LOG](workshop_images/DEMO_LOG4.png)
+![DEMO_LOG](workshop_images/DEMO_LOG2.png)
 
 If we were to apply the inference results back to our original image we would have the following
-![DEMO_BUS](workshop_images/DEMO_INFERENCE.png)
+![DEMO_INFERENCE1](workshop_images/DEMO_INFERENCE1.jpg)
 
 ## Security
 

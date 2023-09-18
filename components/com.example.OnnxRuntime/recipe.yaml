@@ -8,6 +8,6 @@ Manifests:
   - Platform:
       os: all
     Lifecycle:
-      Install: 
-        RequiresPrivilege: 'true'
-        script: "pip3 install awsiotsdk onnxruntime opencv-python-headless boto3"
+      Install:
+        RequiresPrivilege: "true"
+        script: "pip3 install awsiotsdk onnxruntime==1.15.1 opencv-python-headless"

@@ -15,14 +15,14 @@ ComponentConfiguration:
           resources:
             - "*"
     topic: "my/topic"
-    confidence: 0.85
+    confidence: 0.50
 ComponentDependencies:
   com.example.OnnxModelStore:
     VersionRequirement: ">=0.0.1"
     DependencyType: HARD
   com.example.OnnxRuntime:
     VersionRequirement: ">=0.0.1"
-    DependencyType: HARD    
+    DependencyType: HARD
 Manifests:
   - Platform:
       os: all
@@ -32,9 +32,9 @@ Manifests:
     Lifecycle:
       SetEnv:
         IMAGES: "{artifacts:decompressedPath}/com.example.OnnxObjectDetection/images/bus.jpg"
-        MODEL_DIR: "{com.example.OnnxModelStore:artifacts:decompressedPath}/com.example.OnnxModelStore/yolov8n.onnx"
+        MODEL_DIR: "{com.example.OnnxModelStore:artifacts:decompressedPath}/com.example.OnnxModelStore/model.onnx"
         TOPIC: "{configuration:/topic}"
         CONFIDENCE: "{configuration:/confidence}"
-      Run: 
-        RequiresPrivilege: 'true'
+      Run:
+        RequiresPrivilege: "true"
         script: "python3 -u {artifacts:decompressedPath}/com.example.OnnxObjectDetection/main.py hello}"

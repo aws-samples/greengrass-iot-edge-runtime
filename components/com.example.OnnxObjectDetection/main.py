@@ -1,6 +1,5 @@
 import time
 import traceback
-import boto3
 import os
 import sys
 
