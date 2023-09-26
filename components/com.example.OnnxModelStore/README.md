@@ -8,4 +8,4 @@ Files in this directory:
 - gdk-config.json: GDK configuration, used during build
 - recipe.yaml: Greengrass recipe which is filled in during the GDK build process
 - requirements.txt: optional build dependencies which may be needed
-- yolov8n.onnx: pre-trained Yolov8 model which has been converted to ONNX for runtime
+- model.onnx: pre-trained model which has been converted to ONNX for runtime

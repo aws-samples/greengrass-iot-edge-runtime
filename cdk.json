@@ -25,8 +25,7 @@
     "@aws-cdk/core:checkSecretUsage": true,
     "@aws-cdk/aws-iam:minimizePolicies": true,
     "@aws-cdk/core:target-partitions": [
-      "aws",
-      "aws-cn"
+      "aws"
     ],
     "codecommit_repository_arn": "<codecommit-repo-arn>",
     "account": "<account-id>",

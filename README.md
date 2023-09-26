@@ -49,7 +49,7 @@ python3 -m pip install -r requirements.txt
 cdk deploy
 ```
 
-The deploy process takes about 15 minutes.
+The deploy process takes about 15 minutes for each of the AWS CodePipelines to deploy.
 
 ### Continuous Integration and Continuous Delivery (CI/CD)
 
@@ -104,6 +104,18 @@ cat /greengrass/v2/logs/com.example.OnnxObjectDetection.log
 
 If we were to apply the inference results back to our original image we would have the following
 ![DEMO_INFERENCE1](workshop_images/DEMO_INFERENCE1.jpg)
+
+### Conclusion
+
+We have demonstrated event driven inference using AWS IoT Greengrass. This pattern can be extended to have the inference component triggered by components other than the file system monitor component used in this example.
+
+### Clean Up
+
+The resources can be cleaned up by running the following cdk command in your development environment
+
+```
+cdk destroy
+```
 
 ## Security
 
