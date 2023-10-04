@@ -9,7 +9,7 @@ This repository utilizes Continuous Integration and Continuous Delivery (CI/CD) 
 
 This workshop assumes you have AWS Cloud Development Kit (CDK) installed and have bootstrapped to your working region. If you are unfamiliar with CDK, see the following [AWS CDK Resource](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html).
 
-This workshop assumes you have a Greengrass device in your account. See the following for [setting up an Edge Device with AWS IoT Greengrass](https://docs.aws.amazon.com/greengrass/v2/developerguide/setting-up.html). The trained model requires onnxruntime 1.15.0, this version depends on python 3.8 or later.
+This workshop assumes you have a Greengrass device in your account. See the following for [setting up an Edge Device with AWS IoT Greengrass](https://docs.aws.amazon.com/greengrass/v2/developerguide/setting-up.html). The Greengrass device will need a Python version of 3.8 or later to support the onnxruntime version 1.15.0.
 
 ## Setup
 
