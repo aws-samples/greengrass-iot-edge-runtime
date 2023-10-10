@@ -202,7 +202,6 @@ class GreengrassComponentsStack(cdk.Stack):
                 "S3_BUCKET_NAME": codebuild.BuildEnvironmentVariable(
                     value=components_bucket.bucket_name
                 ),
-                "DEV_IOT_THING_GROUP":codebuild.BuildEnvironmentVariable(value=self.node.try_get_context("core_device_group_name")),
                 "AWS_ACCOUNT_NUMBER":codebuild.BuildEnvironmentVariable(value=self.node.try_get_context("account")),
                 "AWS_REGION":codebuild.BuildEnvironmentVariable(value=self.node.try_get_context("region"))
             },

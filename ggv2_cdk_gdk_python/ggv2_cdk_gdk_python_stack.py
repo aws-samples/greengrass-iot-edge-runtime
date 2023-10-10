@@ -22,7 +22,6 @@ class Ggv2CdkGdkPythonStack(Stack):
             "accountNumber": self.node.try_get_context("account"),
             "region": self.node.try_get_context("region"),
             "repository_arn": self.node.try_get_context("codecommit_repository_arn"),
-            "project_prefix": self.node.try_get_context("project_prefix"),
             "branch": self.node.try_get_context("default_branch_name")
         }
 
