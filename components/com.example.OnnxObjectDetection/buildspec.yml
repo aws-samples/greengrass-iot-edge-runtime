@@ -16,7 +16,9 @@ phases:
     commands:
       - echo Entered the build phase...
       - echo Build started on `date`
+      - echo Set region in gdk-config
+      - sed -i 's/"<PLACEHOLDER_REGION>"/"'"$AWS_REGION"'"/' ./gdk-config.json
       - gdk component build
-      - gdk component publish --bucket $S3_BUCKET_NAME 
+      - gdk component publish --bucket $S3_BUCKET_NAME
     finally:
       - echo Exiting the build phase.
