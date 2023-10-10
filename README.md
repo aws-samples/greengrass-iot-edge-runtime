@@ -25,7 +25,7 @@ The code provided in the repository represents a CDK project. The goal is to mov
 git clone https://github.com/aws-samples/greengrass-iot-edge-runtime.git
 ```
 
-3. Configure the cdk.json file with your region, account number, and CodeCommit Repository ARN. Other fields are optional
+3. Configure the cdk.json file with your region, account number, and CodeCommit Repository ARN
 4. Note the CodeCommit HTTPS Clone URL similar to the following:
    ![SETUP_HTTPS](repository_images/SETUP_HTTPS_REPO.png)
 5. Move the repository from AWS Samples into CodeCommit with the following
