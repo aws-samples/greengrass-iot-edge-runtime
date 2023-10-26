@@ -37,4 +37,4 @@ Manifests:
         CONFIDENCE: "{configuration:/confidence}"
       Run:
         RequiresPrivilege: "true"
-        script: "python3 -u {artifacts:decompressedPath}/com.example.OnnxObjectDetection/main.py hello}"
+        script: "python3 -u {artifacts:decompressedPath}/com.example.OnnxObjectDetection/main.py"
